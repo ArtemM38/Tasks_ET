@@ -14,10 +14,17 @@
             { id: 2, name: 'Anna', age: 25 },
             { id: 3, name: 'Petr', age: 17 }
         ]
-        for (let i = 18; i > users.length; i++){
-            console.log(users);
-        }
+
+        let a = users
+        .filter(u => u.age > 18)
+        .map(u => u.name);
+
+        let sum = users.reduce((acc, age) => acc + age.age, 0);
+        let mid = sum / users.length;
+
+        console.log(`Страше 18 лет: ${a}`);
+        console.log(`Средний возраст: ${mid}`);
     </script>
 </body>
-
+ 
 </html>
