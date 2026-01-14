@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task3</title>
+</head>
+
+<body>
+    <input type="text" id="taskInp" placeholder="Введите текст...">
+
+    <button id="send">Добавить</button>
+
+    <ul id="list"></ul>
+
+
+</body>
+<script>
+
+    let list = document.getElementById('list');
+    let inp = document.getElementById('taskInp');
+    let btn = document.getElementById('send');
+
+    btn.addEventListener('click', function () {
+        
+        let text = inp.value.trim();
+
+        if (text == "") {
+            alert("Поле не может быть пустым");
+            return;
+        }
+
+        let newList = document.createElement('li');
+
+        newList.textContent = text;
+
+        list.appendChild(newList);
+
+        inp.value = "";
+    });
+
+</script>
+
+</html>
