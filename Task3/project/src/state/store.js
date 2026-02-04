@@ -1,5 +1,6 @@
 const state = {
     users: [],
+    search: "",
     loading: false,
     error: null,
 };
@@ -25,9 +26,28 @@ function setUsers(users) {
     notify();
 }
 
+function deleteUser(id){
+    state.users = state.users.filter(user => user.id !== id);
+    notify();
+}
+
 function setError(error) {
     state.error = error;
     state.users = [];
+    notify();
+}
+
+function setSearch(value){
+    state.search = value;
+    notify();
+}
+
+function addUser(user){
+    const newId = state.users.length > 0
+        ? Math.max( ...state.users.map(u => u.id)) + 1
+        : 1;
+
+    state.users.push({id: newId, ...user });
     notify();
 }
 
@@ -35,5 +55,9 @@ export {
     state,
     setLoading,
     setUsers,
-    setError
+    setError,
+    deleteUser,
+    setSearch,
+    subscribe,
+    addUser
 };
